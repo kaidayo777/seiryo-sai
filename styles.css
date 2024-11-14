@@ -70,9 +70,8 @@ img {
 	display: block;
 }
 
-	.price img {
-		max-width: 80%; /* 画像を大きく表示 */
-	}
+.price img {
+	max-width: 80%; /* 画像を大きく表示 */
 }
 
 /* デスクトップ用のスタイル */
@@ -100,5 +99,5 @@ img {
 }
 
 .price img {
-	max-width: 60%;
+	max-width: 70%;
 }
