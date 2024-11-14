@@ -101,3 +101,10 @@ img {
 .price img {
 	max-width: 70%;
 }
+
+.botsu {
+	padding-top: 50px;
+	height: auto;
+	width: 40%;
+	margin: 0 auto;
+}
