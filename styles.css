@@ -58,7 +58,7 @@ body {
 .poster {
 	max-width: 75%;
 	height: auto;
-	margin: 20px auto;
+	margin: 0 auto;
 	display: block;
 }
 
@@ -70,10 +70,8 @@ img {
 	display: block;
 }
 
-/* スマートフォン用のスタイル */
-@media (max-width: 600px) {
-	.poster {
-		max-width: 90%;
+	.price img {
+		max-width: 80%; /* 画像を大きく表示 */
 	}
 }
 
