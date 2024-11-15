@@ -8,18 +8,18 @@
 
     <script>
         (function(d) {
-          var config = {
-            kitId: 'rnb8sul',
-            scriptTimeout: 3000,
-            async: true
-          },
-          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+            var config = {
+                    kitId: 'rnb8sul',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
         })(document);
-      </script>
+    </script>
 
     <style>
         body {
-			font-family: gilbert, sans-serif;
+            font-family: gilbert, sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -28,7 +28,7 @@
             margin: 0;
             text-align: center;
             background-image: url("haike.png");
-			background-position: center center;
+            background-position: center center;
         }
         #label {
             font-size: 2em;
@@ -118,156 +118,156 @@
     </style>
 </head>
 <body>
-    <div id="label">Time limit</div>
-    <div id="time">10:00</div>
-    <div id="hint_tex">残り9分で開放</div>
-    <div id="image-container">
-        <img src="image/hint_button_1.svg" alt="ヒント画像"/>
-    </div>
-    <div id="hint_tex">残り6分で開放</div>
-    <div id="image-container_2">
-        <img src="image/hint_button_2.svg" alt="ヒント画像"/>
-    </div>
-    <div id="hint_tex">残り2分で開放</div>
-    <div id="image-container_3">
-        <img src="image/hint_button_2.svg" alt="ヒント画像"/>
-    </div>
-    <div id="gameover">
-        <img src="image/timeup.svg" alt="ヒント画像"/>
-    </div>
-    <div id="overlay"></div>
-    <div id="hint-modal">
-        <!-- SVG画像にも対応 -->
-        <img src="image/hint_day1_1.svg" alt="ヒント画像"/>
-    </div>
+<div id="label">Time limit</div>
+<div id="time">10:00</div>
+<div id="hint_tex">残り11分で開放</div>
+<div id="image-container">
+    <img src="image/hint_button_1.svg" alt="ヒント画像"/>
+</div>
+<div id="hint_tex">残り9分で開放</div>
+<div id="image-container_2">
+    <img src="image/hint_button_1.svg" alt="ヒント画像"/>
+</div>
+<div id="hint_tex">残り7分で開放</div>
+<div id="image-container_3">
+    <img src="image/hint_button_1.svg" alt="ヒント画像"/>
+</div>
+<div id="gameover">
+    <img src="image/timeup.svg" alt="ヒント画像"/>
+</div>
+<div id="overlay"></div>
+<div id="hint-modal">
+    <!-- SVG画像にも対応 -->
+    <img src="image/hint_day2_1.svg" alt="ヒント画像"/>
+</div>
 
-    <div id="hint-modal_2">
-        <!-- SVG画像にも対応 -->
-        <img src="image/hint_day1_2.svg" alt="ヒント画像"/>
-    </div>
+<div id="hint-modal_2">
+    <!-- SVG画像にも対応 -->
+    <img src="image/hint_day2_2.svg" alt="ヒント画像"/>
+</div>
 
-    <div id="hint-modal_3">
-        <!-- SVG画像にも対応 -->
-        <img src="image/hint_day1_3.svg" alt="ヒント画像"/>
-    </div>
+<div id="hint-modal_3">
+    <!-- SVG画像にも対応 -->
+    <img src="image/hint_day2_3.svg" alt="ヒント画像"/>
+</div>
 
-    
 
-    <audio id="time-up-sound" src="timeup.wav"></audio>
 
-    <script>
+<audio id="time-up-sound" src="timeup.wav"></audio>
 
-        const first_hint = 9
-        const scond_hint = 6
-        const third_hint = 2
+<script>
 
-        let remainingTime_global = 0
+    const first_hint = 11
+    const scond_hint = 9
+    const third_hint = 7
 
-        // カウントダウンの長さを秒数で設定（例: 10分 = 600秒）
-        const countdownDuration = 600;
+    let remainingTime_global = 0
 
-        // ローカルストレージのキーを設定
-        const endTimeKey = "countdownEndTime";
+    // カウントダウンの長さを秒数で設定（例: 10分 = 600秒）
+    const countdownDuration = 60*15;
 
-        // 現在の時刻に基づいて終了時刻を設定
-        function setEndTime() {
-            const endTime = Date.now() + countdownDuration * 1000;
-            localStorage.setItem(endTimeKey, endTime);
-            return endTime;
+    // ローカルストレージのキーを設定
+    const endTimeKey = "countdownEndTime";
+
+    // 現在の時刻に基づいて終了時刻を設定
+    function setEndTime() {
+        const endTime = Date.now() + countdownDuration * 1000;
+        localStorage.setItem(endTimeKey, endTime);
+        return endTime;
+    }
+
+    // カウントダウンを開始する関数
+    function startCountdown() {
+        let endTime = localStorage.getItem(endTimeKey);
+
+        // 初回アクセス時やタイマーがない場合、新しい終了時刻を設定
+        if (!endTime || Date.now() > endTime) {
+            endTime = setEndTime();
         }
 
-        // カウントダウンを開始する関数
-        function startCountdown() {
-            let endTime = localStorage.getItem(endTimeKey);
+        // 1秒ごとにカウントダウンを更新
+        const timerInterval = setInterval(() => {
+            const remainingTime = Math.max(0, endTime - Date.now());
+            const timeElement = document.getElementById("time");
+            const timeUpSound = document.getElementById("time-up-sound");
 
-            // 初回アクセス時やタイマーがない場合、新しい終了時刻を設定
-            if (!endTime || Date.now() > endTime) {
-                endTime = setEndTime();
-            }
+            remainingTime_global = remainingTime
 
-            // 1秒ごとにカウントダウンを更新
-            const timerInterval = setInterval(() => {
-                const remainingTime = Math.max(0, endTime - Date.now());
-                const timeElement = document.getElementById("time");
-                const timeUpSound = document.getElementById("time-up-sound");
+            // 残り時間がゼロになると停止
+            if (remainingTime <= 0) {
+                clearInterval(timerInterval);
+                timeElement.textContent = "00:00";
+                document.getElementById("hint-modal").style.display = "none";
+                document.getElementById("hint-modal_2").style.display = "none";
+                document.getElementById("hint-modal_3").style.display = "none";
+                document.getElementById("overlay").style.display = "block";
+                document.getElementById("gameover").style.display = "block";
+                timeUpSound.play();
+            } else {
+                timeElement.textContent = formatTime(remainingTime);
 
-                remainingTime_global = remainingTime
-
-                // 残り時間がゼロになると停止
-                if (remainingTime <= 0) {
-                    clearInterval(timerInterval);
-                    timeElement.textContent = "00:00";
-                    document.getElementById("hint-modal").style.display = "none";
-                    document.getElementById("hint-modal_2").style.display = "none";
-                    document.getElementById("hint-modal_3").style.display = "none";
-                    document.getElementById("overlay").style.display = "block";
-                    document.getElementById("gameover").style.display = "block";
-                    timeUpSound.play();
-                } else {
-                    timeElement.textContent = formatTime(remainingTime);
-
-                    // 残り時間が5分以下になったら画像を表示
-                    if (remainingTime <= first_hint * 60 * 1000) {
-                        document.getElementById("image-container").style.filter = "brightness(100%)";
-                    }
-                    if (remainingTime <= scond_hint * 60 * 1000) {
-                        document.getElementById("image-container_2").style.filter = "brightness(100%)";
-                    }
-                    if (remainingTime <= third_hint * 60 * 1000) {
-                        document.getElementById("image-container_3").style.filter = "brightness(100%)";
-                    }
+                // 残り時間が5分以下になったら画像を表示
+                if (remainingTime <= first_hint * 60 * 1000) {
+                    document.getElementById("image-container").style.filter = "brightness(100%)";
                 }
-            }, 1000);
+                if (remainingTime <= scond_hint * 60 * 1000) {
+                    document.getElementById("image-container_2").style.filter = "brightness(100%)";
+                }
+                if (remainingTime <= third_hint * 60 * 1000) {
+                    document.getElementById("image-container_3").style.filter = "brightness(100%)";
+                }
+            }
+        }, 1000);
+    }
+
+    // 残り時間を分と秒のフォーマットに変換する関数
+    function formatTime(ms) {
+        const totalSeconds = Math.floor(ms / 1000);
+        const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+        const seconds = String(totalSeconds % 60).padStart(2, "0");
+        return `${minutes}:${seconds}`;
+    }
+
+    // ページが読み込まれた時にカウントダウンを開始
+    window.onload = startCountdown;
+
+    document.getElementById("image-container").addEventListener("click", function() {
+        if (remainingTime_global <= first_hint * 60 * 1000) {
+            const hintModal = document.getElementById("hint-modal");
+            const overlay = document.getElementById("overlay");
+
+            overlay.style.display = "block";
+            hintModal.style.display = "block";
         }
+    });
 
-        // 残り時間を分と秒のフォーマットに変換する関数
-        function formatTime(ms) {
-            const totalSeconds = Math.floor(ms / 1000);
-            const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
-            const seconds = String(totalSeconds % 60).padStart(2, "0");
-            return `${minutes}:${seconds}`;
+    document.getElementById("image-container_2").addEventListener("click", function() {
+        if (remainingTime_global <= scond_hint * 60 * 1000) {
+            const hintModal = document.getElementById("hint-modal_2");
+            const overlay = document.getElementById("overlay");
+
+            overlay.style.display = "block";
+            hintModal.style.display = "block";
         }
+    });
 
-        // ページが読み込まれた時にカウントダウンを開始
-        window.onload = startCountdown;
+    document.getElementById("image-container_3").addEventListener("click", function() {
+        if (remainingTime_global <= third_hint * 60 * 1000) {
+            const hintModal = document.getElementById("hint-modal_3");
+            const overlay = document.getElementById("overlay");
 
-        document.getElementById("image-container").addEventListener("click", function() {
-            if (remainingTime_global <= first_hint * 60 * 1000) {
-                const hintModal = document.getElementById("hint-modal");
-                const overlay = document.getElementById("overlay");
-                
-                overlay.style.display = "block";
-                hintModal.style.display = "block";
-            }
-        });
+            overlay.style.display = "block";
+            hintModal.style.display = "block";
+        }
+    });
 
-        document.getElementById("image-container_2").addEventListener("click", function() {
-            if (remainingTime_global <= scond_hint * 60 * 1000) {
-                const hintModal = document.getElementById("hint-modal_2");
-                const overlay = document.getElementById("overlay");
-                
-                overlay.style.display = "block";
-                hintModal.style.display = "block";
-            }
-        });
-
-        document.getElementById("image-container_3").addEventListener("click", function() {
-            if (remainingTime_global <= third_hint * 60 * 1000) {
-                const hintModal = document.getElementById("hint-modal_3");
-                const overlay = document.getElementById("overlay");
-                
-                overlay.style.display = "block";
-                hintModal.style.display = "block";
-            }
-        });
-
-        // オーバーレイクリックでヒントを閉じる
-        document.getElementById("overlay").addEventListener("click", function() {
-            if (remainingTime_global >= 1){document.getElementById("overlay").style.display = "none";}
-            document.getElementById("hint-modal").style.display = "none";
-            document.getElementById("hint-modal_2").style.display = "none";
-            document.getElementById("hint-modal_3").style.display = "none";
-        });
-    </script>
+    // オーバーレイクリックでヒントを閉じる
+    document.getElementById("overlay").addEventListener("click", function() {
+        if (remainingTime_global >= 1){document.getElementById("overlay").style.display = "none";}
+        document.getElementById("hint-modal").style.display = "none";
+        document.getElementById("hint-modal_2").style.display = "none";
+        document.getElementById("hint-modal_3").style.display = "none";
+    });
+</script>
 </body>
 </html>
